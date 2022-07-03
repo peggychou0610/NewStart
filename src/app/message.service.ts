@@ -9,8 +9,12 @@ export class MessageService {
   }
 
   clear() {
-    if(confirm('Do you really want to clear?')) {
-      this.messages = [];
+    if (confirm('Do you really want to clear?')) {
+      if (this.messages.length > 5) {
+        this.messages.splice(0, 5);
+      } else {
+        this.messages = [];
+      }
     }
   }
 }

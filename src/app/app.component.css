@@ -1,4 +1,10 @@
 /* AppComponent's private CSS styles */
+.title {
+  display: flex;
+}
+.title > button {
+  margin-left: .5rem;
+}
 h1 {
   font-size: 1.2em;
   color: #999;

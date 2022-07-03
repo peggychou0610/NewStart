@@ -1,4 +1,7 @@
-<h1>{{title}}</h1>
+<div class="title">
+  <h1>{{title}}</h1>
+  <button (click)="triggerChildClear()">clear top 5 messages</button>
+</div>
 <nav>
   <a routerLink="/cl-dashboard">Dashboard</a>
   <a routerLink="/cl-heroes">Heroes</a>
