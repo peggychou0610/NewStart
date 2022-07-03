@@ -1,7 +1,13 @@
-<h1>{{title}}</h1>
+<div class="title">
+  <h1>{{title}}</h1>
+  <button (click)="triggerChildClear()">clear top 5 messages</button>
+</div>
 <nav>
-  <a routerLink="/dashboard">Dashboard</a>
-  <a routerLink="/heroes">Heroes</a>
+  <ng-container *ngFor="let key of objectKeys(jsonFromMock)">
+    <a [routerLink]="'/cl-' + key">{{ jsonFromMock[key] }}</a>
+  </ng-container>
+  <!-- <a routerLink="/cl-dashboard">Dashboard</a>
+  <a routerLink="/cl-heroes">{{ heroCount }} Heroes</a> -->
 </nav>
 <router-outlet></router-outlet>
 <app-messages></app-messages>

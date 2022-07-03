@@ -1,20 +1,30 @@
+import { DoCheck } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
+import { Hero } from '../../hero';
+import { HeroService } from '../../services/hero.service';
+import { SharedService } from '../../shared-module/services/shared.service';
 
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.css']
 })
-export class HeroesComponent implements OnInit {
+export class HeroesComponent implements OnInit, DoCheck {
   heroes: Hero[];
+  heroCount: number;
 
-  constructor(private heroService: HeroService) { }
+  constructor(private heroService: HeroService, private sharedService: SharedService) { }
 
   ngOnInit() {
     this.getHeroes();
+  }
+
+  ngDoCheck() {
+    if (this.heroes && this.heroes.length !== this.heroCount) {
+      this.heroCount = this.heroes.length;
+      this.sharedService.setMessage(this.heroCount);
+    }
   }
 
   getHeroes(): void {
