@@ -64,6 +64,12 @@ h4 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+@media (min-width: 992px) {
+  .grid {
+    grid-template-columns: unset;
+    grid-auto-flow: column;  
+  }
+}
 @media (max-width: 1024px) {
   .grid {
     margin: 0;
